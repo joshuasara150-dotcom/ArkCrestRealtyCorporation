@@ -55,6 +55,8 @@ Route::middleware(['auth', 'no.cache'])->group(function () {
 
     // Staff sales and real estate agent training — Real Estate Agent Training course
     Route::get('/agent-training', [App\Http\Controllers\TrainingCourseController::class, 'index'])->name('agent-training');
+    Route::get('/agent-training/module/{module}', [App\Http\Controllers\TrainingCourseController::class, 'showModule'])
+        ->name('agent-training.module');
     Route::post('/agent-training/module/{module}/quiz', [App\Http\Controllers\TrainingCourseController::class, 'submitQuiz'])
         ->name('agent-training.quiz.submit')
         ->middleware('throttle:20,1');
